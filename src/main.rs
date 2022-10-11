@@ -9,7 +9,7 @@ use x11rb::{
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// Name of the person to greet
+    /// Name of X11 window to raise
     #[arg(short, long)]
     wname: String,
 }
@@ -22,10 +22,10 @@ fn main() -> Result<()> {
     let (conn, screen_num) = x11rb::connect(None)?;
     let screen = &conn.setup().roots[screen_num];
     debug!("on screen #{}", screen_num);
-    raise_zoom_windows(&conn, screen.root, &args.wname)
+    raise_window_by_name(&conn, screen.root, &args.wname)
 }
 
-fn raise_zoom_windows<Conn>(conn: &Conn, root_win_id: u32, window_name: &str) -> Result<()>
+fn raise_window_by_name<Conn>(conn: &Conn, root_win_id: u32, window_name: &str) -> Result<()>
 where
     Conn: Connection,
 {
