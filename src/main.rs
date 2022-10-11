@@ -52,5 +52,7 @@ where
         }
     }
 
+    conn.flush()?;
+
     Ok(())
 }
