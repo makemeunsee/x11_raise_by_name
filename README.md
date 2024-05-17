@@ -26,7 +26,7 @@ The binary can be installed by running:
 
 The names of all X11 windows can be found out with this command:
 
-`$ xwininfo -root -children -w`
+`$ xwininfo -root -children -wm`
 
 On my setup, the buried Zoom windows have the following names:
 
